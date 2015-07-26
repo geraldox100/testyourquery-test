@@ -3,6 +3,7 @@ package br.com.geraldoferraz.tyqt.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import org.junit.runner.RunWith;
 
 import br.com.geraldoferraz.testyourquery.TestYourQueryRunner;
 import br.com.geraldoferraz.testyourquery.annotations.Dao;
+import br.com.geraldoferraz.testyourquery.annotations.JDBCConnection;
 import br.com.geraldoferraz.testyourquery.annotations.MassPreparer;
 import br.com.geraldoferraz.tyqt.dominio.Person;
 
@@ -24,6 +26,9 @@ public class MassPreparerPersonDaoTest {
 
 	@Dao
 	private PersonDao dao;
+	
+	@JDBCConnection
+	private Connection conn;
 
 	@Test
 	@MassPreparer(PersonDaoPreparer.class)

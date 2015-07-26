@@ -7,8 +7,15 @@ import br.com.geraldoferraz.testyourquery.config.EntityManagerProvider;
 
 public class MyProvider implements EntityManagerProvider {
 
+	private static final String persistenceUnit = "nutrition-2";
+
 	public EntityManagerFactory getEntityManagerFactory() {
-		return Persistence.createEntityManagerFactory("nutrition-2");
+		return Persistence.createEntityManagerFactory(persistenceUnit);
 	}
+
+	public String getPersistenceUnit() {
+		return persistenceUnit;
+	}
+
 
 }
