@@ -13,13 +13,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.com.geraldoferraz.testyourquery.TestYourQueryRunner;
+import br.com.geraldoferraz.testyourquery.annotations.Configurator;
 import br.com.geraldoferraz.testyourquery.annotations.Dao;
 import br.com.geraldoferraz.testyourquery.annotations.JDBCConnection;
 import br.com.geraldoferraz.testyourquery.annotations.MassPreparer;
+import br.com.geraldoferraz.testyourquery.config.Configuration;
+import br.com.geraldoferraz.testyourquery.config.ConfigurationFactory;
 import br.com.geraldoferraz.tyqt.dominio.Person;
 
 @RunWith(TestYourQueryRunner.class)
 public class MassPreparerPersonDaoTest {
+	
+	@Configurator
+	public static Configuration configurator(){
+		return new ConfigurationFactory()
+				.addEntity(Person.class)
+				.build();
+	}
 
 	@PersistenceContext
 	private static EntityManager em;
